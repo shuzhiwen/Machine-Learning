@@ -1,0 +1,5 @@
+pos/3.jpg 1 0 0 30 30
+pos/5.jpg 1 0 0 30 30
+pos/4.jpg 1 0 0 30 30
+pos/2.jpg 1 0 0 30 30
+pos/1.jpg 1 0 0 30 30
