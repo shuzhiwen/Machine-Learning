@@ -1,7 +1,7 @@
 import os
 import cv2
 
-size = 30
+size = 20
 
 def alter(path,object):
   result = []
@@ -16,4 +16,3 @@ def alter(path,object):
     count = count + 1
 
 alter('org_pos', 'pos')
-alter('org_neg', 'neg')

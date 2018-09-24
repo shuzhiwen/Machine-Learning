@@ -1,10 +1,9 @@
 import os
 
-size = 30
+size = 20
 
 def creat(path, sign):
   l = os.listdir(path)
-  os.chdir(path)
   files = open(path+'.txt', 'w')
   for name in l:
     if name == path+'.txt':
@@ -18,7 +17,6 @@ def creat(path, sign):
       if name != l[len(l) - 1]:
         files.write('\n')
   files.close
-  os.chdir('..')
 
 creat('pos', '+')
 creat('neg', '-')

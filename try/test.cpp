@@ -7,36 +7,44 @@
   
 using namespace std;
 using namespace cv;
-  
+
 int main() {
-  //定义级联分类器
-	CascadeClassifier face_detector;
+  VideoCapture capture(0);
+	
+	//定义级联分类器
+	CascadeClassifier School_badge;
 	//加载分类器
-	face_detector.load("dst/cascade.xml");
+	School_badge.load("dst/cascade.xml");
 	//判断分类器是否加载成功
-	if (face_detector.empty()) {
+	if (School_badge.empty()) {
 		std::cerr << "load detector failed!!!" << std::endl;
 		return -1;
 	}
  
 	//获取训练集的原始尺寸，作为分类器的最小尺寸，这样能得到最佳的检测效果（不是必须的）
-	Size original_size = face_detector.getOriginalWindowSize();
+	Size original_size = School_badge.getOriginalWindowSize();
  
-	Mat image = imread("test.jpg", IMREAD_COLOR);
- 
-	Mat image_gray;
-	cvtColor(image, image_gray, COLOR_BGR2GRAY);
+  while(1) {
+		Mat image;
+		capture >> image;
 	
-	//用于保存检测到的目标窗口
-	std::vector<Rect> faces;
-	//进行多尺度人脸检测
-	face_detector.detectMultiScale(image_gray, faces, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, original_size);
- 
-	//将检测到的目标窗口逐个绘制到原图上
-	for (size_t i = 0; i < faces.size(); i++) {
-		rectangle(image, faces[i], Scalar(0, 0, 255), 2, 8, 0);
-	}
- 
-	imshow("detect result", image);
-	waitKey(0);
+		//Mat image = imread("test.jpg");
+		Mat image_gray;
+		cvtColor(image, image_gray, COLOR_BGR2GRAY);
+		
+	  blur(image_gray, image_gray, Size(7, 7)); //降噪
+		
+		//用于保存检测到的目标窗口
+		std::vector<Rect> badges;
+		//进行多尺度人脸检测
+		School_badge.detectMultiScale(image_gray, badges, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, original_size);
+	
+		//将检测到的目标窗口逐个绘制到原图上
+		for (size_t i = 0; i < badges.size(); i++) {
+			rectangle(image, badges[i], Scalar(0, 0, 255), 2, 8, 0);
+		}
+	
+		imshow("detect result", image);
+		waitKey(1);
+  }
 }
