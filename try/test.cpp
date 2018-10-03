@@ -36,7 +36,7 @@ int main() {
 		
 		//用于保存检测到的目标窗口
 		std::vector<Rect> badges;
-		//进行多尺度人脸检测
+		//进行多尺度图片检测
 		School_badge.detectMultiScale(image_gray, badges, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, original_size);
 	
 		//将检测到的目标窗口逐个绘制到原图上
