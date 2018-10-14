@@ -6,7 +6,7 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": "g++ -g -o a.out *.cpp `pkg-config --cflags --libs opencv` && ./a.out",
+            "command": "g++ -g -o a.out *.cpp `pkg-config --cflags --libs opencv`",
             "group": {
                 "kind": "build",
                 "isDefault": true

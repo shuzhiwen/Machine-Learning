@@ -2,9 +2,9 @@
 #include "opencv2/objdetect/objdetect.hpp"  
 #include "opencv2/highgui/highgui.hpp"  
 #include "opencv2/imgproc/imgproc.hpp"  
-#include <fstream>  
-#include <iostream>  
-  
+#include <fstream>
+#include <iostream>
+
 using namespace std;
 using namespace cv;
 
@@ -33,7 +33,7 @@ int main() {
 		cvtColor(image, image_gray, COLOR_BGR2GRAY);
 		
 	  blur(image_gray, image_gray, Size(7, 7)); //降噪
-		
+
 		//用于保存检测到的目标窗口
 		std::vector<Rect> badges;
 		//进行多尺度图片检测
