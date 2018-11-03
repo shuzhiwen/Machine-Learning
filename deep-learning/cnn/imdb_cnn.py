@@ -14,7 +14,7 @@ from keras.layers import Conv1D, GlobalMaxPooling1D
 from keras.datasets import imdb
 
 # set parameters:
-max_features = 5000
+max_features = 2000
 maxlen = 400
 batch_size = 32
 embedding_dims = 50
